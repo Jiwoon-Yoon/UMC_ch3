@@ -1,24 +1,29 @@
-import Movie from "./Components/Movie";
-import {movies} from "./movieDummy";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Celebrity from "./pages/Celebrity";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import TV from "./pages/TV";
+import Movies from "./pages/Movies";
+import Header from "./Components/Header";
+import PageDetail from "./pages/PageDetail";
+import Login from "./pages/Login";
 
-function App() {
+
+function App(){
   return (
-    <div className="App">
-      <div className="app-container">
-        {
-          movies.results.map((item)=>{
-            return(
-              <Movie 
-                title={item.title}
-                poster_path={item.poster_path}
-                vote_average={item.vote_average}
-              />
-            )
-          })
-          //movie_Dummy에서 Movie로 정보 가져오는 코드.
-        }
-
-      </div>
+    <div className="root-wrap">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/movie" element={<Movies/>} />
+          <Route path="/movie/:title" element={<PageDetail/>}/>
+          <Route path="/tv" element={<TV/>} />
+          <Route path="/person" element={<Celebrity/>} />
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/*" element={<NotFound/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,22 +1,83 @@
+@import 'reset.css';
+
 body {
-    background-color: #22254b;
+    
 }
 
-.app-container{
+.root-wrap{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+
+.header-container{
+    background-color: rgba(3,37,65,1);
+}
+
+.header-wrap{
+    height:64px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    display:flex;
+    align-items:center;
+    
+}
+
+.header-left-wrap{
+    display:flex;
+}
+
+
+.header-left-wrap ul{
+    display:flex;
+    align-items:center;
+    margin-left:16px;
+}
+
+.header-left-wrap li{
+    margin-right:14px;
+    padding: 8px;
+    list-style: none;
+}
+
+.header-nav-item{
+    color:white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.page-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+.movies-container{
+    background-color: #22254b;
     display:flex;
     flex-direction: row;
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content:center;  
 }
 
 .movie_container{
+    position:relative;
+    z-index: 1;
     width: 250px;
     background-color: #373b69;
     margin:16px;
+    
+
 }
 
 .movie_container img{
     width:250px;
+}
+
+.movie_container:hover {
+    opacity:0.2;
 }
 
 .movie-info{
@@ -29,4 +90,92 @@ body {
 
 .movie-info span{
     margin:3px;
+}
+
+.movie_container .inner-content{
+    opacity: 0;
+    position:absolute;
+    z-index: 5;
+    display: flex;
+    color: white;
+    flex-direction: row;
+    flex-wrap:wrap; 
+    top:5%;
+    left:5%;
+
+}
+
+.movie_container .inner-content span{
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.movie_container:hover .inner-content{
+    opacity: 1;    
+}
+
+.login-container{
+    position:absolute;
+    top:30px;
+    bottom :0;
+    width:100%;
+    max-width: 500px;
+    padding:0 20px;
+
+    left:50%;
+    transform: translate(-50%,0);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleWrap{
+    margin-top:87px;
+    font-weight: bold;
+    font-size:26px;
+}
+
+.input-container{
+    margin-top:30px;
+    flex:1;    /*버튼이 제일 하단으로 가도록 수직방향 flex에서 가운데를 1로 만듦*/
+    font-size :12px;
+    font-weight: 600;
+}
+
+.input-container input{
+    display: block;
+    margin:10px;
+    padding:16px;
+    width: 95%;
+    border-radius: 8px;
+    border: 1px solid gray;
+    font-size:14px;
+    font-weight:400;
+}
+
+.input-container input:focus-within{
+    border:1px solid #22254b;
+}
+
+.errorMessageWrap{
+    margin:8px;
+    color:red;
+    font-size:12px;
+}
+
+#login_check{
+    width:100%;
+    height: 48px;
+    font-weight: 700;
+    background-color:#22254b;
+    color:white;
+    border-radius: 60px;
+    margin-bottom:16px;
+    cursor: pointer;
+}
+
+#login_check:disabled{
+    background-color: #dadada;
+    color: white;
+    border:none;
 }
